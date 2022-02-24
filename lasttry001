@@ -1,0 +1,96 @@
+def priority(x, y):
+    for i in pjt:
+        if i[0] == x:
+            p = i
+            ady = p[4] - cday
+        if i[0] == y:
+            q = i
+            bdy = q[4] - cday
+    if ady > bdy:
+        return q
+    elif ady < bdy:
+        return p
+    elif ady == bdy:
+        if p[4] > q[4]:
+            return q
+        else:
+            return p
+
+
+def cond():
+    flag = 0
+    count = 0
+    for i in pjt:
+        if i[5] == 0:
+            flag += 1
+        count += 1
+    if flag == count:
+        return 0
+    return 1
+
+
+n, m = map(int, input().split())
+con = []
+pjt = []
+t = []
+d1 = {}
+d2 = {}
+d3 = {}
+asgn = []
+cday = 0
+flg = 0
+cnt = 0
+scre = 0
+tm = ""
+
+for i in range(n):
+    s = input().split()
+    con.append([s[0], 0])
+    l1 = []
+    for j in range(int(s[1])):
+        b = input().split()
+        b[1] = int(b[1])
+        l1.append(b)
+    d1[s[0]] = l1
+
+for i in range(m):
+    a = input().split()
+    pjt.append([a[0], int(a[1]), int(a[2]), int(a[3]), int(a[4]), -1])
+    l2 = []
+    for j in range(int(a[4])):
+        c = input().split()
+        c[1] = int(c[1])
+        l2.append(c)
+    d3[a[0]] = 0
+    d2[a[0]] = l2
+
+t = d3.keys()
+while cond():
+    for i in pjt:
+        for j in d2[i[0]]:
+            for k in con:
+                for l in d1[k[0]]:
+                    if k[1] == 0 and l[0] == j[0]:
+                        flg += 1
+        cnt += 1
+    if flg == cnt:
+        d3[j[0]] = 1
+        tm = j[0]
+    flg = cnt = 0
+
+    for i in d3:
+        if d3[i] == 1:
+            tm = priority(tm, i)
+
+    for i in d3:
+        d3[i] = 0
+
+    for i in pjt:
+        if i[0] == tm:
+            i[5] = i[1]
+        if i[5] > -1 and i[5] != 0:
+            i[5] -= 1
+            if i[5] == 0:
+                scre += i[2] -(cday - i[3])
+                #print output here
+    cday += 1
