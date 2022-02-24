@@ -1,0 +1,29 @@
+n, m = map(int, input().split())
+d1 = {}
+d2 = {}
+l = []
+role = []
+m1 = []
+m2 = []
+m3 = []
+
+for i in range(n):
+    s = input().split()
+    l.append(s[0])
+    l1 = []
+    for j in range(int(s[1])):
+        b = input().split()
+        l1.append(b)
+    d1[s[0]] = b
+for i in range(m):
+    a = input().split()
+    role.append(a[0])
+    m1.append(a[1])
+    m2.append(a[2])
+    m3.append(a[3])
+    l2 = []
+    for j in range(int(a[4])):
+        c = input().split()
+        c.append(0)
+        l2.append(c)
+    d2[a[0]] = l2
