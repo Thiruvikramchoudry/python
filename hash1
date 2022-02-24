@@ -1,0 +1,29 @@
+n,m=map(int,input().split())
+l=[]
+cource=[]
+role=[]
+m1=[];m2=[];m3=[]
+req=[]
+
+for i in range(n):
+    s=input().split()
+    l.append(s[0])
+    l1=[]
+    for j in range(int(s[1])):
+        
+        b=input().split()
+        l1.append(b)
+    cource.append(l1)
+for i in range(m):
+    a=input().split()
+    role.append(a[0])
+    m1.append(a[1])
+    m2.append(a[2])
+    m3.append(a[3])
+    l2=[]
+    for j in range(int(a[4])):
+        c=input().split()
+        l2.append(c)
+    req.append(l2)
+
+    
